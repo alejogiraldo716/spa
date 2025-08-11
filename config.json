@@ -1,0 +1,25 @@
+{
+    "email": {
+        "sender": {
+            "email": "spa.turquesa.manizales@gmail.com",
+            "password": "zhphqwxaaciiikav"
+        },
+        "receiver": {
+            "email": "spa.turquesa.manizales@gmail.com"
+        }
+    },
+    "whatsapp": {
+        "artist": {
+            "viviana": {
+                "number": "+573232214554",
+                "api_url": "https://api.callmebot.com/whatsapp.php",
+                "api_key": "4918214"
+            },
+            "cathe": {
+                "number": "+573232214554",
+                "api_url": "https://api.callmebot.com/whatsapp.php",
+                "api_key": "4918214"
+            }
+        }
+    }
+}
