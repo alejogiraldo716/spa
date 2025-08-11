@@ -11,7 +11,14 @@ import requests
 load_dotenv()  # Cargar variables de entorno desde .env
 
 app = Flask(__name__)
-CORS(app)  # Permitir CORS para todas las rutas
+CORS(app, resources={
+    r"/api/*": {
+        "origins": [
+            "http://localhost:5000",
+            "https://scheduler-dda37.web.app"
+        ]
+    }
+})
 
 # Cargar configuración desde config.json
 with open('config.json', 'r') as f:
@@ -47,6 +54,10 @@ CATHE_WHATSAPP_API_KEY = os.getenv('CATHE_API_KEY')
 # @app.route('/admin')
 # def admin():
 #     # return render_template('admin.html')
+
+@app.route('/')
+def home():
+    return jsonify({"status": "ok", "message": "Backend funcionando correctamente"})
 
 # Ruta de prueba para verificar que el backend funciona
 @app.route('/api/test')
