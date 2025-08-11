@@ -14,7 +14,7 @@ app = Flask(__name__)
 CORS(app)  # Permitir CORS para todas las rutas
 
 # Cargar configuración desde config.json
-with open('static/data/config.json', 'r') as f:
+with open('config.json', 'r') as f:
     config = json.load(f)
 
 
