@@ -170,5 +170,8 @@ def send_whatsapp_callmebot(phone, message, api_url, api_key):
         print("❌ Error al enviar WhatsApp:", e)
 
 # -------------------------------
+# if __name__ == '__main__':
+#     app.run(debug=True, port=5001)  # Cambia el puerto si es necesario
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)  # Cambia el puerto si es necesario
+    port = int(os.environ.get("PORT", 5001))  # Usa el puerto de Render o 5001 por defecto
+    app.run(host='0.0.0.0', port=port)  # ¡Cambia host a 0.0.0.0!
