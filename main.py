@@ -11,12 +11,17 @@ import requests
 load_dotenv()  # Cargar variables de entorno desde .env
 
 app = Flask(__name__)
+# Configurar CORS para permitir solicitudes desde el frontend
 CORS(app, resources={
     r"/api/*": {
         "origins": [
             "http://localhost:5000",
-            "https://scheduler-dda37.web.app"
-        ]
+            "https://scheduler-dda37.web.app",
+            "https://spa-qyb1.onrender.com"
+        ],
+        "methods": ["GET", "POST", "OPTIONS"],
+        "allow_headers": ["Content-Type", "Authorization"],
+        "supports_credentials": True
     }
 })
 
