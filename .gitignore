@@ -68,3 +68,5 @@ node_modules/
 # dataconnect generated files
 .dataconnect
 service_account.json
+
+__pycache__/
