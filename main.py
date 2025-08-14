@@ -70,6 +70,11 @@ def test():
     return jsonify({"status": "ok", "message": "Backend funcionando!"})
 
 
+# Ruta de ping rápido para despertar Render
+@app.route('/api/ping', methods=['GET'])
+def ping():
+    return jsonify({"status": "ok", "message": "pong"}), 200
+
 @app.route('/api/book', methods=['POST'])
 def book_appointment():
     data = request.json
