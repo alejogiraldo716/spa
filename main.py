@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 from calendar_helper import create_calendar_event
 import json
@@ -9,6 +9,12 @@ from email.mime.text import MIMEText
 import requests
 
 load_dotenv()  # Cargar variables de entorno desde .env
+FRONTEND_DIR = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "..", "..", "firebase", "public")
+)
+
+
+
 
 app = Flask(__name__)
 # Configurar CORS para permitir solicitudes desde el frontend
@@ -74,6 +80,17 @@ def test():
 @app.route('/api/ping', methods=['GET'])
 def ping():
     return jsonify({"status": "ok", "message": "pong"}), 200
+
+
+# Ruta para la página de funciones admin
+@app.route('/admin_functions')
+def admin_functions():
+    return send_from_directory(FRONTEND_DIR, "admin_functions.html")
+
+@app.route('/<path:filename>')
+def serve_static(filename):
+    return send_from_directory(FRONTEND_DIR, filename)
+
 
 @app.route('/api/book', methods=['POST'])
 def book_appointment():
